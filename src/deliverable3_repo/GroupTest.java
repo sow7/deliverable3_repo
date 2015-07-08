@@ -10,6 +10,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+/**
+ * As a user, I would like to join my favorite group. 
+ * So that I can see the updated information about my favorite talks.
+ *
+ */
 
 public class GroupTest {
 	
@@ -32,6 +37,9 @@ public class GroupTest {
 		driver.get("http://halley.exp.sis.pitt.edu/comet/community.do?comm_id=4");
 	}
 
+	//	Given that I have logged in and see my prefered group in the group list
+	//  When I click on the join button
+	//  Then I see that join button changes to joined button
 	@Test
 	public void joinTest() {
 		driver.findElement(By.cssSelector("input[onclick*='spanmemrcid4']")).click(); //click the join button to join a group
@@ -44,6 +52,9 @@ public class GroupTest {
 		}
 	}
 	
+	//	Given that I have logged in and want to leave my joined group
+	//  When I click on the leave button
+	//  Then I see that leave button changes to join button
 	@Test
 	public void leaveTest() {
 		driver.findElement(By.cssSelector("input[onclick*='spanmemrcid4']")).click();//click the leave button to leave a group

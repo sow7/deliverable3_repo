@@ -12,6 +12,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+/**
+ * As a user, I would like to subscribe the talks of my favorite speakers. 
+ * So that I can see the updated information about my favorite speakers.
+ *
+ */
+
 public class SubscribeTest {
 	
 	static WebDriver driver = new FirefoxDriver();
@@ -33,6 +39,9 @@ public class SubscribeTest {
 		driver.get("http://halley.exp.sis.pitt.edu/comet/speakerlist.do");
 	}
 
+	//	Given that I have logged in and see my favorite speaker in the speaker list
+	//  When I click on the subscribe button
+	//  Then I see that subscribe button changes to unsubscribe button
 	@Test
 	public void subscribetest() {
 		try {
@@ -53,7 +62,9 @@ public class SubscribeTest {
 		}
 	}
 	
-	
+	//	Given that I have logged in and want to change my subscribed speaker
+	//  When I click on the unsubscribe button
+	//  Then I see that unsubscribe button changes to subscribe button
 	//the reason why I do this test like this, because there is a defect, the subscirbed speaker won't be recorded by the website
 	@Test
 	public void unsubscribetest() {

@@ -11,6 +11,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+/**
+ * As a user, I would like to mark the talks that I am interested in. 
+ * So that I can easy find my favorite talks in the bookmark.
+ *
+ */
 
 public class BookmarkTest {
 	
@@ -30,7 +35,9 @@ public class BookmarkTest {
 		submitButton.click();
 	}
 
-	//
+	//	Given that I have logged in and see a favorite talk
+	//	When I click on link of ¡°Bookmark¡±
+	//	Then I see that ¡°Unbookmark¡± displays in the link.
 	@Test
 	public void unbookMarktest() {
 		try {
@@ -45,7 +52,9 @@ public class BookmarkTest {
 		}
 	}
 	
-	//
+	//	Given that I have logged in and don¡¯t like one talk in my bookmark
+	//	When I click on link of ¡°Unbookmark¡±
+	//	Then I see that ¡°Bookmark¡± displays in the link.
 	@Test
 	public void bookMarktest() {
 		try {

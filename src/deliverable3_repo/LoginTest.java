@@ -11,10 +11,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
- * As a user, I would like to see reddit links in all sorts of ways, So that I
- * can know what is happening in the world
- * 
- * @author wss
+ * As a user, I would like to log in CoMet. 
+ * So that I can do the personal operations.
  *
  */
 
@@ -28,6 +26,9 @@ public class LoginTest {
 		driver.get("http://halley.exp.sis.pitt.edu/comet/login.do");
 	}
 	
+	//	Given that I have a right account and a right password
+	//	When I log into the website
+	//	Then I see that the logout button displays in the page.
 	@Test
 	public void rightLoginTest() {
 		
@@ -49,6 +50,9 @@ public class LoginTest {
 		}
 	}
 	
+	//	Given that I have a right account and a wrong password
+	//	When I log into the website
+	//	Then I see that the website provides an error information about this wrong account.
 	@Test
 	public void wrongLoginTest() {
 		
