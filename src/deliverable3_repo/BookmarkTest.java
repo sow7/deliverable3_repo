@@ -20,6 +20,13 @@ public class BookmarkTest {
 		// get into the main page of the web site
 		driver.get("http://halley.exp.sis.pitt.edu/comet/login.do");
 
+	}
+
+	@Test
+	public void bookmarkTest() {
+		// Look for the sign in button (in the login div) and click
+		// to attempt to login
+
 		// click the link of sign in and get into the sign in page for next
 		// testing
 		
@@ -29,16 +36,10 @@ public class BookmarkTest {
 		driver.findElement(By.name("password")).sendKeys("lzhang11");
 		WebElement loginButtion = driver.findElement(By.id("btnSignin"));
 		loginButtion.click();
-	}
-
-	@Test
-	public void bookmarkTest() {
-		// Look for the sign in button (in the login div) and click
-		// to attempt to login
-
-//		WebElement bookmark = driver.findElement(By.id("spanbookcolid8402"));
-		 WebElement bookmark =
-		 driver.findElement(By.cssSelector("a[onclick*='spanbookcolid8402']"));
+		
+		WebElement bookmark = driver.findElement(By.xpath("//*[@id='divTalkContent']/table/tbody/tr[3]/td/table/tbody/tr[1]/td/table/tbody/tr/td[2]/a"));
+//		 WebElement bookmark =
+//		 driver.findElement(By.cssSelector("a[onclick*='spanbookcolid8402']"));
 		bookmark.click();
 
 		try {

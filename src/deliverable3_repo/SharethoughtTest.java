@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
@@ -30,14 +31,21 @@ public class SharethoughtTest {
 
 	@Test
 	public void test() {
-		driver.findElement(By.id("txtShare")).sendKeys(
+		driver.findElement(By.tagName("textarea")).sendKeys(
 				"test11");
 		
 		WebElement ShareButton = driver.findElement(By.id("btnShareComment"));
 		ShareButton.click();
 		
 //		find the content of this path:
-		//*[@id="tdRecentActivity"]/table[1]/tbody/tr[2]/td[2]/text()[1]
+		WebElement shareContent=driver.findElement(By.xpath("//*[@id='tdRecentActivity']/table[1]/tbody/tr[2]/td[2]/text()[1]"));
+		String content=shareContent.getText();
+		try {
+			
+			assertEquals(content.contains("test11"),true);
+		} catch (NoSuchElementException nseex) {
+			fail();
+		}
 		
 	}
 
