@@ -17,33 +17,35 @@ public class BookmarkTest {
 	@Before
 	public void setUp() throws Exception {
 
-		// get into the main page of the webset
-		driver.get("http://halley.exp.sis.pitt.edu/comet/index.do");
+		// get into the main page of the web site
+		driver.get("http://halley.exp.sis.pitt.edu/comet/login.do");
 
-		// click the link of register and get into the register page for next testing
-		WebElement signinButtion = driver.findElement(By.linkText("sign in"));
-		signinButtion.click();
+		// click the link of sign in and get into the sign in page for next
+		// testing
+		// WebElement signinButtion =
+		// driver.findElement(By.linkText("sign in"));
+		// signinButtion.click();
 
 		driver.findElement(By.name("userEmail")).sendKeys(
 				"lanzhang.lemon@gmail.com");
 		driver.findElement(By.name("password")).sendKeys("lzhang11");
-
+		WebElement loginButtion = driver.findElement(By.id("btnSignin"));
+		loginButtion.click();
 	}
 
 	@Test
-	public void BookmarkTest() {
+	public void bookmarkTest() {
 		// Look for the sign in button (in the login div) and click
 		// to attempt to login
-		WebElement loginButtion = driver.findElement(By.id("btnSignin"));
-		loginButtion.click();
-		
-		WebElement bookmark = driver.findElement(By.linkText("Bookmark"));
+
+//		WebElement bookmark = driver.findElement(By.id("spanbookcolid8402"));
+		 WebElement bookmark =
+		 driver.findElement(By.cssSelector("a[onclick*='spanbookcolid8402']"));
 		bookmark.click();
 
 		try {
-			WebElement isbookmark = driver.findElement(By
-					.linkText("Unbookmark"));
-			assertTrue(isbookmark.isDisplayed());
+			String content = bookmark.getText();
+			assertEquals(content, "Unbookmark");
 		} catch (NoSuchElementException nseex) {
 			fail();
 		}
