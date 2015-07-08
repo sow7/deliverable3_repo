@@ -61,8 +61,8 @@ public class SharethoughtTest {
 	}
 	
 	//	Given that I have logged in and see a thought that I like
-	//  When I click on the ¡°like¡± button
-	//  Then I see that the ¡°like¡± button changes to ¡°unlike¡± button.
+	//  When I click on the "like" button
+	//  Then I see that the "like" button changes to "unlike" button.
 	@Test
 	public void unlikeTest() {
 		new WebDriverWait(driver, 15).until(
@@ -82,8 +82,8 @@ public class SharethoughtTest {
 	}
 	
 	//	Given that I have logged in and see a thought that I want to cancel the status of like
-	//  When I click on the ¡°unlike¡± button
-	//  Then I see that the ¡°unlike¡± button changes to ¡°like¡± button
+	//  When I click on the "unlike" button
+	//  Then I see that the "unlike" button changes to "like" button
 	@Test
 	public void likeTest() {
 		new WebDriverWait(driver, 15).until(

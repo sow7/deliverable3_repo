@@ -36,8 +36,8 @@ public class BookmarkTest {
 	}
 
 	//	Given that I have logged in and see a favorite talk
-	//	When I click on link of ¡°Bookmark¡±
-	//	Then I see that ¡°Unbookmark¡± displays in the link.
+	//	When I click on link of "Bookmark"
+	//	Then I see that "Unbookmark" displays in the link.
 	@Test
 	public void unbookMarktest() {
 		try {
@@ -52,9 +52,9 @@ public class BookmarkTest {
 		}
 	}
 	
-	//	Given that I have logged in and don¡¯t like one talk in my bookmark
-	//	When I click on link of ¡°Unbookmark¡±
-	//	Then I see that ¡°Bookmark¡± displays in the link.
+	//	Given that I have logged in and don't like one talk in my bookmark
+	//	When I click on link of "Unbookmark"
+	//	Then I see that "Bookmark" displays in the link.
 	@Test
 	public void bookMarktest() {
 		try {
