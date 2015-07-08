@@ -11,38 +11,49 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+
 public class BookmarkTest {
 	
 	static WebDriver driver = new FirefoxDriver();
+	
+	// Start at the login page for CoMeT for each test
 	@Before
 	public void setUp() throws Exception {
 		driver.get("http://halley.exp.sis.pitt.edu/comet/login.do");
+		
+		//input userEmail: lanzhang.lemon@gmail.com and password:lzhang11
 		driver.findElement(By.name("userEmail")).sendKeys("lanzhang.lemon@gmail.com");
 		driver.findElement(By.name("password")).sendKeys("lzhang11");
 
-		// Look for the submit button (in the login div) and click
-		// to attempt to login
+		// Look for the login button (in the login div) and click to login
 		WebElement submitButton = driver.findElement(By.id("btnSignin"));
 		submitButton.click();
 	}
 
+	//
 	@Test
 	public void unbookMarktest() {
-		WebElement bookmarkButton = driver.findElement(By.cssSelector("a[onclick*='spanbookcolid8402']"));
-		bookmarkButton.click();
 		try {
-			//WebElement unbookmarkButton = driver.findElement(By.cssSelector("a[onclick*='spanbookcolid8402']"));
-			assertTrue(bookmarkButton.getText().contains("Unbookmark"));
+			WebElement bookmarkButton = driver.findElement(By.cssSelector("a[onclick*='spanbookcolid8402']"));
+			//before click the button should be Bookmark, since user doesn't bookmark it before.
+			assertTrue(bookmarkButton.getText().contains("Bookmark")); 
+			bookmarkButton.click();
+			//after click the button should be Unbookmark, since user bookmark it already.
+			assertTrue(bookmarkButton.getText().contains("Unbookmark")); 
 		} catch (NoSuchElementException nseex) {
 			fail();
 		}
 	}
 	
+	//
 	@Test
 	public void bookMarktest() {
-		WebElement unbookmarkButton = driver.findElement(By.cssSelector("a[onclick*='spanbookcolid8402']"));
-		unbookmarkButton.click();
 		try {
+			WebElement unbookmarkButton = driver.findElement(By.cssSelector("a[onclick*='spanbookcolid8402']"));
+			//before click the unbookmarkButtonbutton should be Unbookmark, since user has bookmarked it.
+			assertTrue(unbookmarkButton.getText().contains("Unbookmark")); 
+			unbookmarkButton.click();
+			//after click the unbookmarkButtonbutton should be Bookmark, since user unbookmark it already.
 			assertTrue(unbookmarkButton.getText().contains("Bookmark"));
 		} catch (NoSuchElementException nseex) {
 			fail();

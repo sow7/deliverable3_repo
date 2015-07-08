@@ -21,7 +21,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class LoginTest {
 
 	static WebDriver driver = new FirefoxDriver();
-
+	
+	// Start at the login page for CoMeT for each test
 	@Before
 	public void setUp() throws Exception {
 		driver.get("http://halley.exp.sis.pitt.edu/comet/login.do");
@@ -29,18 +30,16 @@ public class LoginTest {
 	
 	@Test
 	public void rightLoginTest() {
+		
 		// Enter username "lanzhang.lemon@gmail.com", password "lzhang11"
-
 		driver.findElement(By.name("userEmail")).sendKeys("lanzhang.lemon@gmail.com");
 		driver.findElement(By.name("password")).sendKeys("lzhang11");
 
-		// Look for the submit button (in the login div) and click
-		// to attempt to login
-
+		// Look for the login button (in the login div) and click to login
 		WebElement submitButton = driver.findElement(By.id("btnSignin"));
 		submitButton.click();
-		// Check that there is a link to reset password and it is visible
-
+		
+		// Check whether or not it login successfully, if successful, the logout button should show
 		try {
 			WebElement logoutButton = driver.findElement(By.cssSelector("a[href='/comet/logout.do']"));
 			assertTrue(logoutButton.isDisplayed());
@@ -52,18 +51,16 @@ public class LoginTest {
 	
 	@Test
 	public void wrongLoginTest() {
-		// Enter username "lanzhang.lemon@gmail.com", password "lzhang"
-
+		
+		// Enter username "lanzhang.lemon@gmail.com", wrong password "lzhang"
 		driver.findElement(By.name("userEmail")).sendKeys("lanzhang.lemon@gmail.com");
 		driver.findElement(By.name("password")).sendKeys("lzhang");
 
-		// Look for the submit button (in the login div) and click
-		// to attempt to login
-
+		// Look for the login button (in the login div) and click to login
 		WebElement submitButton = driver.findElement(By.id("btnSignin"));
 		submitButton.click();
-		// Check that there is a link to reset password and it is visible
-
+		
+		// Check that wrong password instruction shows.
 		try {
 			WebElement resetPw = driver.findElement(By.cssSelector("td[style='font-size: 0.75em;color: red;font-weight: bold;']"));
 			assertTrue(resetPw.isDisplayed());
