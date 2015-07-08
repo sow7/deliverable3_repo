@@ -28,11 +28,11 @@ public class BookmarkTest {
 
 	@Test
 	public void unbookMarktest() {
-		WebElement unbookmarkButton = driver.findElement(By.cssSelector("a[onclick*='spanbookcolid8402']"));
-		unbookmarkButton.click();
+		WebElement bookmarkButton = driver.findElement(By.cssSelector("a[onclick*='spanbookcolid8402']"));
+		bookmarkButton.click();
 		try {
 			//WebElement unbookmarkButton = driver.findElement(By.cssSelector("a[onclick*='spanbookcolid8402']"));
-			assertTrue(unbookmarkButton.getText().contains("Unbookmark"));
+			assertTrue(bookmarkButton.getText().contains("Unbookmark"));
 		} catch (NoSuchElementException nseex) {
 			fail();
 		}
@@ -40,10 +40,10 @@ public class BookmarkTest {
 	
 	@Test
 	public void bookMarktest() {
-		WebElement bookmarkButton = driver.findElement(By.cssSelector("a[onclick*='spanbookcolid8402']"));
-		bookmarkButton.click();
+		WebElement unbookmarkButton = driver.findElement(By.cssSelector("a[onclick*='spanbookcolid8402']"));
+		unbookmarkButton.click();
 		try {
-			assertTrue(bookmarkButton.getText().contains("Bookmark"));
+			assertTrue(unbookmarkButton.getText().contains("Bookmark"));
 		} catch (NoSuchElementException nseex) {
 			fail();
 		}
