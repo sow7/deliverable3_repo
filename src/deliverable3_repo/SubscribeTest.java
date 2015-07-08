@@ -9,10 +9,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-//import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-//import org.openqa.selenium.JavascriptExecutor;
 
-public class GroupTest {
+public class SubscribeTest {
 	
 	static WebDriver driver = new FirefoxDriver();
 	@Before
@@ -25,26 +23,30 @@ public class GroupTest {
 		// to attempt to login
 		WebElement submitButton = driver.findElement(By.id("btnSignin"));
 		submitButton.click();
-		driver.get("http://halley.exp.sis.pitt.edu/comet/community.do?comm_id=4");
+		driver.get("http://halley.exp.sis.pitt.edu/comet/speakerlist.do");
 	}
 
 	@Test
-	public void joinTest() {
-		driver.findElement(By.cssSelector("input[onclick*='spanmemrcid4']")).click();
+	public void subscribetest() {
 		try {
-			WebElement leaveButton = driver.findElement(By.id("spanmemrcid4"));
-			assertTrue(leaveButton.getText().contains("Joined"));
+			WebElement UnsubcribeButton = driver.findElement(By.cssSelector("a[onclick*='spansubrspid6783']"));
+			assertTrue(UnsubcribeButton.getText().equals("Subscribe"));
+			driver.findElement(By.cssSelector("a[onclick*='spansubrspid6783']")).click();
+			assertTrue(UnsubcribeButton.getText().equals("Unsubscribe"));
 		} catch (NoSuchElementException nseex) {
 			fail();
 		}
 	}
 	
 	@Test
-	public void leaveTest() {
-		driver.findElement(By.cssSelector("input[onclick*='spanmemrcid4']")).click();
+	public void unsubscribetest() {
 		try {
-			WebElement joinButton = driver.findElement(By.cssSelector("input[onclick*='spanmemrcid4']"));
-			assertTrue(joinButton.getAttribute("value").equals("Join"));
+			WebElement subcribeButton = driver.findElement(By.cssSelector("a[onclick*='spansubrspid6783']"));
+			assertTrue(subcribeButton.getText().equals("Subscribe"));
+			driver.findElement(By.cssSelector("a[onclick*='spansubrspid6783']")).click();
+			assertTrue(subcribeButton.getText().equals("Unsubscribe"));
+			driver.findElement(By.cssSelector("a[onclick*='spansubrspid6783']")).click();
+			assertTrue(subcribeButton.getText().equals("Subscribe"));
 		} catch (NoSuchElementException nseex) {
 			fail();
 		}
